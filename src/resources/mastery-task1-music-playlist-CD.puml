@@ -54,31 +54,34 @@ class PlaylistDao {
 
 newpage
 
-class AlbumTrackNotFoundException {
-    -serialVersionUID: long
-}
+class AlbumTrackNotFoundException
 
-class InvalidAttributeValueException {
-    -serialVersionUID: long
-}
-class PlaylistNotFoundException {
-    -serialVersionUID: long
-}
+class InvalidAttributeException
 
+class InvalidAttributeValueException
+
+class InvalidAttributeChangeException
+
+class PlaylistNotFoundException
+
+InvalidAttributeException <|-- InvalidAttributeChangeException
+InvalidAttributeException <|-- InvalidAttributeValueException
 
 newpage
 
 class AlbumTrack {
-    -asin:String
-    -trackNumber: Integer
+    - @DynamoDBHashKey asin:String
+    - @DynamoDBRangeKey trackNumber: Integer
     -albumName: String
     -songTitle: String
 
 }
 
 class Playlist {
-    -id:String
+    - @DynamoDBHashKey id:String
     -songCount: Integer
+    -name: String
+    -customerId: String
     -tags: Set<String>
     -songList: List<AlbumTrack>
     +getId(): String

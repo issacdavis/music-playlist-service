@@ -1,7 +1,14 @@
 package com.amazon.ata.music.playlist.service.converters;
 
+import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
 import com.amazon.ata.music.playlist.service.models.PlaylistModel;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
+import com.amazon.ata.music.playlist.service.models.SongModel;
+import org.junit.jupiter.api.Tags;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class ModelConverter {
     /**
@@ -12,6 +19,13 @@ public class ModelConverter {
     public PlaylistModel toPlaylistModel(Playlist playlist) {
         return PlaylistModel.builder()
             .withId(playlist.getId())
+                .withName(playlist.getName())
+                .withSongCount(playlist.getSongCount())
+                .withTags(playlist.getTagsList())
+                .withCustomerId(playlist.getCustomerId())
             .build();
     }
+//    public List<SongModel> toSongModel(List<AlbumTrack> albumTracks) {
+//
+//    }
 }

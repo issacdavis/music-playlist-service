@@ -7,6 +7,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -20,6 +21,7 @@ public class Playlist {
     private String customerId;
     private Integer songCount;
     private Set<String> tags;
+    private List<String> tagsList;
     private List<AlbumTrack> songList;
 
     @DynamoDBHashKey(attributeName = "id")
@@ -68,6 +70,10 @@ public class Playlist {
 
     public void setTags(Set<String> tags) {
         this.tags = tags;
+    }
+
+    public List<String> getTagsList() {
+        return tagsList;
     }
 
     public void setSongList(List<AlbumTrack> songList) {

@@ -3,6 +3,7 @@ package com.amazon.ata.music.playlist.service.dynamodb;
 import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import org.checkerframework.checker.units.qual.A;
 
 /**
  * Accesses data for an album using {@link AlbumTrack} to represent the model in DynamoDB.
@@ -17,5 +18,11 @@ public class AlbumTrackDao {
      */
     public AlbumTrackDao(DynamoDBMapper dynamoDbMapper) {
         this.dynamoDbMapper = dynamoDbMapper;
+    }
+    public AlbumTrack getAlbumTrack(String asin, int trackNumber) {
+        AlbumTrack albumTrack = new AlbumTrack();
+        albumTrack.setAsin(asin);
+        albumTrack.setTrackNumber(trackNumber);
+        return dynamoDbMapper.load(AlbumTrack.class, albumTrack);
     }
 }

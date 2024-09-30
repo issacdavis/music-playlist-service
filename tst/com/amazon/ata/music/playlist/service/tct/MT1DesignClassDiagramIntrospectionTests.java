@@ -61,33 +61,33 @@ public class MT1DesignClassDiagramIntrospectionTests {
         );
     }
 
-//    @Test
-//    void mt1Design_getClassDiagram_containsAlbumTrackFields() {
-//        assertClassDiagramTypeContainsMember(
-//            content, "AlbumTrack", "@DynamoDBHashKey\\s*asin\\s*:\\s*String", "asin");
-//        assertClassDiagramTypeContainsMember(
-//            content, "AlbumTrack", "@DynamoDBRangeKey\\s*trackNumber\\s*:\\s*Integer", "trackNumber");
-//        assertClassDiagramTypeContainsMember(
-//            content, "AlbumTrack", "albumName\\s*:\\s*String", "albumName");
-//        assertClassDiagramTypeContainsMember(
-//            content, "AlbumTrack", "songTitle\\s*:\\s*String", "songTitle");
-//    }
-//
-//    @Test
-//    void mt1Design_getClassDiagram_containsPlaylistFields() {
-//        assertClassDiagramTypeContainsMember(
-//            content, "Playlist", "@DynamoDBHashKey\\s*id\\s*:\\s*String", "id");
-//        assertClassDiagramTypeContainsMember(
-//            content, "Playlist", "name\\s*:\\s*String", "name");
-//        assertClassDiagramTypeContainsMember(
-//            content, "Playlist", "customerId\\s*:\\s*String", "customerId");
-//        assertClassDiagramTypeContainsMember(
-//            content, "Playlist", "songCount\\s*:\\s*Integer", "songCount");
-//        assertClassDiagramTypeContainsMember(
-//            content, "Playlist", "tags\\s*:\\s*Set<String>", "tags");
-//        assertClassDiagramTypeContainsMember(
-//            content, "Playlist", "songList\\s*:\\s*List<AlbumTrack>", "songList");
-//    }
+    @Test
+    void mt1Design_getClassDiagram_containsAlbumTrackFields() {
+        assertClassDiagramTypeContainsMember(
+            content, "AlbumTrack", "@DynamoDBHashKey\\s*asin\\s*:\\s*String", "asin");
+        assertClassDiagramTypeContainsMember(
+            content, "AlbumTrack", "@DynamoDBRangeKey\\s*trackNumber\\s*:\\s*Integer", "trackNumber");
+        assertClassDiagramTypeContainsMember(
+            content, "AlbumTrack", "albumName\\s*:\\s*String", "albumName");
+        assertClassDiagramTypeContainsMember(
+            content, "AlbumTrack", "songTitle\\s*:\\s*String", "songTitle");
+    }
+
+    @Test
+    void mt1Design_getClassDiagram_containsPlaylistFields() {
+        assertClassDiagramTypeContainsMember(
+            content, "Playlist", "@DynamoDBHashKey\\s*id\\s*:\\s*String", "id");
+        assertClassDiagramTypeContainsMember(
+            content, "Playlist", "name\\s*:\\s*String", "name");
+        assertClassDiagramTypeContainsMember(
+            content, "Playlist", "customerId\\s*:\\s*String", "customerId");
+        assertClassDiagramTypeContainsMember(
+            content, "Playlist", "songCount\\s*:\\s*Integer", "songCount");
+        assertClassDiagramTypeContainsMember(
+            content, "Playlist", "tags\\s*:\\s*Set<String>", "tags");
+        assertClassDiagramTypeContainsMember(
+            content, "Playlist", "songList\\s*:\\s*List<AlbumTrack>", "songList");
+    }
 
     @ParameterizedTest
     @ValueSource(strings = {"AlbumTrackDao", "PlaylistDao"})

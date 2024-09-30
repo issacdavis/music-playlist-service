@@ -14,12 +14,7 @@ public class AlbumTrack {
     private String albumName;
     private String songTitle;
 
-    public AlbumTrack(String asin, Integer trackNumber, String albumName, String songTitle) {
-        this.asin = asin;
-        this.trackNumber = trackNumber;
-        this.albumName = albumName;
-        this.songTitle = songTitle;
-    }
+
     @DynamoDBHashKey(attributeName = "asin")
     public String getAsin() {
         return asin;
