@@ -60,4 +60,4 @@ public class GetPlaylistActivityTest {
 //        assertEquals(expectedSongCount, result.getPlaylist().getSongCount());
 //        assertEquals(expectedTags, result.getPlaylist().getTags());
 //    }
-//}
+}
