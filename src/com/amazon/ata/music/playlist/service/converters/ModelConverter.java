@@ -25,7 +25,17 @@ public class ModelConverter {
                 .withCustomerId(playlist.getCustomerId())
             .build();
     }
-//    public List<SongModel> toSongModel(List<AlbumTrack> albumTracks) {
-//
-//    }
+    public List<SongModel> toSongModel(List<AlbumTrack> albumTracks) {
+        List<SongModel> songModel = new ArrayList<>();
+        for (AlbumTrack albumTrack : albumTracks) {
+            songModel.add(
+                SongModel.builder()
+                    .withAsin(albumTrack.getAsin())
+                    .withTrackNumber(albumTrack.getTrackNumber())
+                    .withAlbum(albumTrack.getAlbumName())
+                    .withTitle(albumTrack.getSongTitle())
+                    .build());
+        }
+        return songModel;
+    }
 }
