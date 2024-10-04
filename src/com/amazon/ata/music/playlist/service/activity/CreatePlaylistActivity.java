@@ -1,5 +1,6 @@
 package com.amazon.ata.music.playlist.service.activity;
 
+import com.amazon.ata.music.playlist.service.dynamodb.models.AlbumTrack;
 import com.amazon.ata.music.playlist.service.dynamodb.models.Playlist;
 import com.amazon.ata.music.playlist.service.models.requests.CreatePlaylistRequest;
 import com.amazon.ata.music.playlist.service.models.results.CreatePlaylistResult;
@@ -14,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 /**
@@ -58,6 +60,9 @@ public class CreatePlaylistActivity implements RequestHandler<CreatePlaylistRequ
         playlist.setCustomerId(createPlaylistRequest.getCustomerId());
         Set<String> tags = new HashSet<>(createPlaylistRequest.getTags());
         playlist.setTags(tags);
+        playlist.setSongCount(0);
+        LinkedList<AlbumTrack> songList = new LinkedList<>();
+        playlist.setSongList(songList);
         playlistDao.savePlaylist(playlist);
 
         return CreatePlaylistResult.builder()

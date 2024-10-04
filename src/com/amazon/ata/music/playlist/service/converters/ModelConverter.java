@@ -17,11 +17,17 @@ public class ModelConverter {
      * @return the converted playlist
      */
     public PlaylistModel toPlaylistModel(Playlist playlist) {
+        List<String> songList;
+        if (playlist.getTags() != null) {
+            songList = new ArrayList<>(playlist.getTags());
+        } else {
+            songList = new ArrayList<>();
+        }
         return PlaylistModel.builder()
             .withId(playlist.getId())
                 .withName(playlist.getName())
                 .withSongCount(playlist.getSongCount())
-                .withTags(playlist.getTagsList())
+                .withTags(songList)
                 .withCustomerId(playlist.getCustomerId())
             .build();
     }

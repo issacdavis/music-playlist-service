@@ -72,9 +72,6 @@ public class Playlist {
         this.tags = tags;
     }
 
-    public List<String> getTagsList() {
-        return tagsList;
-    }
 
     public void setSongList(List<AlbumTrack> songList) {
         this.songList = songList;

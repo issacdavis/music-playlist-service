@@ -61,26 +61,25 @@ public class AddSongToPlaylistActivity implements RequestHandler<AddSongToPlayli
     @Override
     public AddSongToPlaylistResult handleRequest(final AddSongToPlaylistRequest addSongToPlaylistRequest, Context context) {
         log.info("Received AddSongToPlaylistRequest {} ", addSongToPlaylistRequest);
-
         Playlist playlist = playlistDao.getPlaylist(addSongToPlaylistRequest.getId());
-        AlbumTrack albumTrack = albumTrackDao.getAlbumTrack(addSongToPlaylistRequest.getAsin(), addSongToPlaylistRequest.getTrackNumber());
+        AlbumTrack albumTrack = albumTrackDao.getAlbumTrack(addSongToPlaylistRequest.getAsin(),addSongToPlaylistRequest.getTrackNumber());
 
-        LinkedList<AlbumTrack> songLL = new LinkedList<>(playlist.getSongList());
-        if (playlist == null) {
-            throw new PlaylistNotFoundException("Playlist not found");
+        if (albumTrack == null){
+            throw new AlbumTrackNotFoundException();
         }
-        if (albumTrack == null) {
-            throw new AlbumTrackNotFoundException("Album track not found");
+        if (playlist == null){
+            throw new PlaylistNotFoundException();
+        }
+        if (addSongToPlaylistRequest.isQueueNext()){
+            playlist.getSongList().add(0, albumTrack);
+        }else {
+            playlist.getSongList().add(albumTrack);
         }
 
-        playlist.getSongList().add(albumTrack);
         playlistDao.savePlaylist(playlist);
-        List<SongModel> songModelList = new ModelConverter().toSongModel(playlist.getSongList());
-
-
 
         return AddSongToPlaylistResult.builder()
-                .withSongList(songModelList)
+                .withSongList(new ModelConverter().toSongModel(playlist.getSongList()))
                 .build();
     }
 }
