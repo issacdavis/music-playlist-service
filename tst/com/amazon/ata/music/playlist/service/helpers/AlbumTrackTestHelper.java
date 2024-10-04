@@ -39,11 +39,11 @@ public final class AlbumTrackTestHelper {
 
     public static void assertAlbumTrackEqualsSongModel(AlbumTrack albumTrack, SongModel songModel) {
         String message = String.format("Expected album track %s to match song model %s", albumTrack, songModel);
-//        assertAlbumTrackEqualsSongModel(albumTrack, songModel, message);
+        assertAlbumTrackEqualsSongModel(albumTrack, songModel, message);
     }
 
     public static void assertAlbumTrackEqualsSongModel(AlbumTrack albumTrack, SongModel songModel, String message) {
-//        assertEquals(albumTrack.getAsin(), songModel.getAsin(), message);
+        assertEquals(albumTrack.getAsin(), songModel.getAsin(), message);
         assertEquals(albumTrack.getTrackNumber(), songModel.getTrackNumber(), message);
         assertEquals(albumTrack.getAlbumName(), songModel.getAlbum(), message);
         assertEquals(albumTrack.getSongTitle(), songModel.getTitle(), message);
